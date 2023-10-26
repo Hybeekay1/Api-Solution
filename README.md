@@ -112,9 +112,11 @@ helm list -A
 kubectl get deployment 
 kubectl get svc
 ```
+<img src="images/Screenshot 2023-10-26 190057.png" alt="Alt text">
 
 View the application using:
 `https://localhost/api/health`
 
+<img src="images/Screenshot 2023-10-26 190149.png" alt="Alt text">
 
 - CI/CD can be added using a couple of options. i did not go into that as the focus was only on local deployment
