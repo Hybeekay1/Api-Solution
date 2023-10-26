@@ -1,0 +1,32 @@
+version: "3.3"
+services:
+  mongo:
+    image: mongo:4.0
+    ports:
+      - 27017:27017
+
+  mongo-express:
+    image: mongo-express:0.54.0
+    ports:
+      - 8081:8081
+
+  web:
+    build:
+      context: ./api
+    ports:
+      - 8080:8080
+    environment:
+      - MONGO_URI=mongodb://mongo/chattest
+    depends_on: 
+      - mongo
+
+  data:
+    build:
+      context: ./api
+    environment:
+      - MONGO_URI=mongodb://mongo/chattest
+    command: ["npm", "run", "migrate"]
+    depends_on: 
+      - mongo
+volumes:
+  mongo_data:
